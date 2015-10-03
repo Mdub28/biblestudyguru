@@ -125,6 +125,27 @@
 }
 
 /**************/
+/**  Profile  */
+/**************/
+
+
+.profilePanel {
+    background-color: red;
+    width: 400px;
+}
+
+.profilePanel label {
+    display: block;
+    overflow: hidden;
+}
+
+.profilePanel input,
+.profilePanel select {
+    float: right;
+    width: 250px;
+}
+
+/**************/
 /** Dashboard */
 /**************/
 
