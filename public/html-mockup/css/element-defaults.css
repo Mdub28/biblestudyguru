@@ -1,5 +1,5 @@
 /*
-	default element styles
+    default element styles
 */
 
 * {
@@ -7,11 +7,11 @@
 }
 
 body {
-	font-size: 18px;
+    font-size: 18px;
 }
 
 input, button {
-	font-size: 1.5rem;
-	vertical-align: middle;
-	padding: 6px 4px;
+    font-size: 1.5rem;
+    vertical-align: middle;
+    padding: 6px 4px;
 }
