@@ -1,0 +1,37 @@
+/*
+    specific styles
+*/
+
+
+.top-branding {
+    text-align: center;
+}
+
+
+/* login view */
+.login-form {
+    text-align: center;
+}
+
+
+/* studies list view */
+.study-list {
+    list-style: none;
+    padding: 0;
+}
+
+
+
+/* single study view */
+
+.show-filters-btn {
+    float: left;
+}
+
+.timer-btn {
+    float: right;
+}
+
+.filter-modal {
+    width: 200px;
+}
