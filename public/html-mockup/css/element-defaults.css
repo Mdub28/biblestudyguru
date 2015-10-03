@@ -1,0 +1,17 @@
+/*
+	default element styles
+*/
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+	font-size: 18px;
+}
+
+input, button {
+	font-size: 1.5rem;
+	vertical-align: middle;
+	padding: 6px 4px;
+}
