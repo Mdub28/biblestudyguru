@@ -2,8 +2,14 @@ module Api
   module V1
     class BaseApiController < ApplicationController
       before_filter :parse_request, :authenticate_user_from_token!
+
+    rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
     
       private
+      def record_not_found
+        format_json_output(nil, status: 'exception', message: 'Record not found')
+      end
+
       def authenticate_user_from_token!
         #if !@json['api_token']
         #  render nothing: true, status: :unauthorized

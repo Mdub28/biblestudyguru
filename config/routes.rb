@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   namespace 'api' do
     namespace 'v1' do
       resources :user_actions, only: [:index]
+      resources :courses, only: [:index, :show, :create, :update, :destroy]
+      resources :studies, only: [:index, :show, :create, :update, :destroy]
     end
   end
 
