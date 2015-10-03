@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151003183210) do
+ActiveRecord::Schema.define(version: 20151003185039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,26 @@ ActiveRecord::Schema.define(version: 20151003183210) do
 
   add_index "studies", ["course_id"], name: "index_studies_on_course_id", using: :btree
 
+  create_table "study_passages", force: :cascade do |t|
+    t.integer  "study_id"
+    t.integer  "bible_book_id"
+    t.integer  "chapter_start"
+    t.integer  "verse_start"
+    t.integer  "chapter_end"
+    t.integer  "verse_end"
+    t.integer  "bible_translation_id"
+    t.integer  "position"
+    t.integer  "bible_passage_annotation_id"
+    t.integer  "duration_in_minutes"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "study_passages", ["bible_book_id"], name: "index_study_passages_on_bible_book_id", using: :btree
+  add_index "study_passages", ["bible_passage_annotation_id"], name: "index_study_passages_on_bible_passage_annotation_id", using: :btree
+  add_index "study_passages", ["bible_translation_id"], name: "index_study_passages_on_bible_translation_id", using: :btree
+  add_index "study_passages", ["study_id"], name: "index_study_passages_on_study_id", using: :btree
+
   create_table "user_actions", force: :cascade do |t|
     t.string   "description"
     t.string   "link_text"
@@ -141,6 +161,10 @@ ActiveRecord::Schema.define(version: 20151003183210) do
   add_foreign_key "bible_passage_annotations", "annotations"
   add_foreign_key "courses", "users"
   add_foreign_key "studies", "courses"
+  add_foreign_key "study_passages", "bible_books"
+  add_foreign_key "study_passages", "bible_passage_annotations"
+  add_foreign_key "study_passages", "bible_translations"
+  add_foreign_key "study_passages", "studies"
   add_foreign_key "user_actions", "users"
   add_foreign_key "votes", "annotations"
   add_foreign_key "votes", "users"
