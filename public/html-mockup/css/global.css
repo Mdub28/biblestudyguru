@@ -20,6 +20,13 @@
     padding: 0;
 }
 
+.study-list > li {
+    background-color: #eee;
+    margin: 1em 0;
+    border: 1px solid black;
+    border-radius: 15px;
+}
+
 
 
 /* single study view */

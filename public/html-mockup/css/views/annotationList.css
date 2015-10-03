@@ -1,12 +1,14 @@
 #annotationList {
+    width: 180px;
     list-style-type: none;
-    padding-left: 0;
-
-    width: 150px;
+    padding: 0px;
+    border: 1px solid black;
+    background-color: lightgray;
+    border-radius: 15px;
 }
 
 #annotationList li {
-    padding-bottom: 10px;
+    padding: 5px;
     overflow: hidden;
 }
 
@@ -15,10 +17,12 @@
     margin-right: 10px;
 }
 
-.upAnnotation, .downAnnotation {
+.upAnnotation, .downAnnotation, .addAnnotation {
     display: block;
-    background-color: white;
+    background-color: transparent;
     border: 0;
+    width: 100%;
+    font-size: 20px;
 }
 
 .annotationProfileThumbanil {
