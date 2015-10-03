@@ -1,72 +1,72 @@
 /*
-	helper classes
+    helper classes
 */
 
 
 /* no bullets on list */
 .no-bullets {
-	padding: 0;
-	list-style: none;
+    padding: 0;
+    list-style: none;
 }
 
 /* .field-row */
 .field-row {
-	display: block;
-	width: 100%;
-	margin-top: 1em;
-	text-align: left;
-	overflow: hidden;
-	line-height: 44px;
+    display: block;
+    width: 100%;
+    margin-top: 1em;
+    text-align: left;
+    overflow: hidden;
+    line-height: 44px;
 }
 
 .field-row input,
 .field-row select {
-	float: right;
+    float: right;
 }
 
 button.field-row {
-	text-align: center;
-	line-height: inherit;
+    text-align: center;
+    line-height: inherit;
 }
 
 
 /* .content-col */
 .content-col {
-	max-width: 400px;
-	margin-left: auto;
-	margin-right: auto;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
 /* remove top margin for first heading in box */
 .box :first-child {
-	margin-top: 0;
+    margin-top: 0;
 }
 .box :last-child {
-	margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 
 /* .modal-backdrop */
 .modal-backdrop {
-	display: none;
-	position: fixed;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	text-align: center;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
 }
 
 .modal-backdrop.active {
-	display: block;
+    display: block;
 }
 
 .modal {
-	text-align: left;
-	display: inline-block;
-	padding: 1em;
-	margin: 14% auto 0;
-	background: #eee;
-	border: 1em solid #ddd;
+    text-align: left;
+    display: inline-block;
+    padding: 1em;
+    margin: 14% auto 0;
+    background: #eee;
+    border: 1em solid #ddd;
 }
