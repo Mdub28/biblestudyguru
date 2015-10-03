@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :study_passages
   resources :studies
   resources :courses
   devise_for :users

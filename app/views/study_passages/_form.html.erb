@@ -1,0 +1,57 @@
+<%= form_for(@study_passage) do |f| %>
+  <% if @study_passage.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@study_passage.errors.count, "error") %> prohibited this study_passage from being saved:</h2>
+
+      <ul>
+      <% @study_passage.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :study_id %><br>
+    <%= f.text_field :study_id %>
+  </div>
+  <div class="field">
+    <%= f.label :bible_book %><br>
+    <%= f.text_field :bible_book %>
+  </div>
+  <div class="field">
+    <%= f.label :chapter_start %><br>
+    <%= f.number_field :chapter_start %>
+  </div>
+  <div class="field">
+    <%= f.label :verse_start %><br>
+    <%= f.number_field :verse_start %>
+  </div>
+  <div class="field">
+    <%= f.label :chapter_end %><br>
+    <%= f.number_field :chapter_end %>
+  </div>
+  <div class="field">
+    <%= f.label :verse_end %><br>
+    <%= f.number_field :verse_end %>
+  </div>
+  <div class="field">
+    <%= f.label :bible_translation_id %><br>
+    <%= f.text_field :bible_translation_id %>
+  </div>
+  <div class="field">
+    <%= f.label :position %><br>
+    <%= f.number_field :position %>
+  </div>
+  <div class="field">
+    <%= f.label :bible_passage_annotation_id %><br>
+    <%= f.text_field :bible_passage_annotation_id %>
+  </div>
+  <div class="field">
+    <%= f.label :duration_in_minutes %><br>
+    <%= f.number_field :duration_in_minutes %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
