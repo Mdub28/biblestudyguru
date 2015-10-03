@@ -11,3 +11,11 @@
 /log/*
 !/log/.keep
 /tmp
+.idea/.name
+.idea/biblestudyguru.iml
+.idea/encodings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
+.idea/scopes/scope_settings.xml

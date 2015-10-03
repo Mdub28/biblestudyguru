@@ -6,31 +6,89 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <img id="logo" src="img/logo_100x100.jpg"/>
-    <h1>Bible Study Guru</h1>
-    <p>Wouldn't it be great to use the entire Body of Christ to help you build your Bible study? Well with Bible Study Guru, you can!</p>
-    <form>
-        <div>
-            <label for="biblePassage">Bible Passage:</label>
-            <input id="biblePassage" type="text"/>
-        </div>
-    </form>
+    <div class="dashboard">
 
-    <form>
-        <div class="loginField">
-            <label for="username">Username:</label>
-            <input id="username" type="text" size="10" placeholder="Username"/>
-        </div>
-        <div class="loginField">
-            <label for="password">Password:</label>
-            <input id="password" type="text" size="10" placeholder="Password"/>
-        </div>
-        <button>Login</button>
-    </form>
+        <div class="dashboardHeader">
 
-    <h2>Activity Feed</h2>
+            <div class="titlePanel">
+                <img class="logo" src="img/logo.jpg"/>
+                <h1 class="productTitle">Bible Study Guru</h1>
+            </div>
+
+            <div class="loginPanel">
+                <div class="loginField">
+                    <label for="username">Username:</label>
+                    <input id="username" type="text" size="10" placeholder="Username"/>
+                </div>
+                <div class="loginField">
+                    <label for="password">Password:</label>
+                    <input id="password" type="text" size="10" placeholder="Password"/>
+                </div>
+                <button>Login</button>
+            </div>
+        </div>
+
+        <div class="welcomePanel">
+            <h2>Welcome to Bible Study Guru!</h2>
+            <p>The purpose of a Bible Study Group is to engage people with Sacred Scripture. However, leading one of these groups can be intimidating! Where to start? What resources to use? How do I best bring my friends closer to God through the study of His Word? Wouldn't it be great to use the entire Body of Christ to help you build your Bible study? Well with Bible Study Guru, you can!</p>
+            <p>With Bible Study Guru you can annotate your preferred translation of the Bible with commentary and questions to guide your local Bible Study Group.
+                You can also add links to videos, images and MP3s. All annotations are, by default, visible to the public.
+                This means that, as you study the Bible, you can look at the questions and comments other Christians from around the globe have added and automatically incorporate into your own study.</p>
+            <p>With Bible Study Guru, we will help Bible Study leaders around the world prepare the best possible Bible studies, to break open the Word of God for others. Enter a Bible passage below or <a href="#">Register</a> to get started!</a></p>
+
+            <div class="passageSearchPanel">
+                <label for="biblePassage">Bible Passage:</label>
+                <input id="biblePassage" type="text"/>
+                <button>Search!</button>
+            </div>
+        </div>
+
+        <div class="activityFeedPanel">
+            <h2>Activity Feed</h2>
+
+            <ol id="activityList">
+                <li><img src="img/user-1.png" class="profileThumbanil"/><a href="#">David Bates</a> just added <a href="#">an annotation</a> to John 3:16</li>
+                <li><img src="img/user-2.png" class="profileThumbanil"/><a href="#">Aaron Stockton</a> just created a new course <a href="#">John's Gospel and the Book of Genesis"</a></li>
+                <li><img src="img/user-3.png" class="profileThumbanil"/><a href="#">Daniel Hug</a> just liked <a href="#">Michael's annotation</a></li>
+                <li><img src="img/user-4.png" class="profileThumbanil"/><a href="#">George Michael</a> just added <a href="#">an annotation</a> to John 3:16</li>
+                <li><img src="img/user-5.png" class="profileThumbanil"/><a href="#">Michael Bluth</a> just created a new course <a href="#">John's Gospel and the Book of Genesis"</a></li>
+                <li><img src="img/user-6.png" class="profileThumbanil"/><a href="#">Joe Martin</a> just liked <a href="#">Michael's annotation</a></li>
+                <li><img src="img/user-5.png" class="profileThumbanil"/><a href="#">Michael Bluth</a> just created a new course <a href="#">John's Gospel and the Book of Genesis"</a></li>
+                <li><img src="img/user-2.png" class="profileThumbanil"/><a href="#">Aaron Stockton</a> just created a new course <a href="#">John's Gospel and the Book of Genesis"</a></li>
+                <li><img src="img/user-3.png" class="profileThumbanil"/><a href="#">Daniel Hug</a> just liked <a href="#">Michael's annotation</a></li>
+                <li><img src="img/user-1.png" class="profileThumbanil"/><a href="#">David Bates</a> just added <a href="#">an annotation</a> to John 3:16</li>
+                <li><img src="img/user-4.png" class="profileThumbanil"/><a href="#">George Michael</a> just added <a href="#">an annotation</a> to John 3:16</li>
+                <li><img src="img/user-6.png" class="profileThumbanil"/><a href="#">Joe Martin</a> just liked <a href="#">Michael's annotation</a></li>
+            </ol>
+        </div>
+
+    </div>
+
+
+    <!--
+    <div class="passageSearchPanel">
+
+    </div>
+
+
+    <div class="brandingPanel">
+
+    </div>
+    -->
+
+<!--
+
+
+-->
+
+
+    <!--
+
+
     <div class="activityFeed">
 
     </div>
+    -->
+
 </body>
 </html>
