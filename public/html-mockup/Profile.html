@@ -3,52 +3,39 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/views/profile.css">
 </head>
 <body>
 
-<form>
-    <div>
-        <label for="screenName">Screen Name:</label>
-        <input id="screenName" type="text"/>
-    </div>
+<div class="profilePanel">
+    <div class="userPanel">
+        <label>Screen Name: <input id="screenName" type="text"/></label>
+        <label>Email: <input id="email" type="text"/></label>
+        <label>Translation:
+            <select id="translation">
+                <option value="rsv">Revised Standard Version (RSV)</option>
+                <option value="niv">New International Version (NIV)</option>
+                <!-- ... -->
+            </select>
+        </label>
+        <label>Denomination:
+            <select id="denomination">
+                <option value="baptist">Baptist</option>
+                <option value="presbyterian">Presbyterian</option>
+                <!-- ... -->
+            </select>
+        </label>
+        <label>Website: <input id="website" type="text"/></label>
+        <label>Twitter Name: <input id="twitterName" type="text"/></label>
 
-    <div>
-        <label for="email">Email:</label>
-        <input id="email" type="text"/>
+        <button>Save</button>
+        <button>Cancel</button>
     </div>
-
-    <div>
-        <label for="translation">Translation:</label>
-        <select id="translation">
-            <option value="rsv">Revised Standard Version (RSV)</option>
-            <option value="niv">New International Version (NIV)</option>
-            <!-- ... -->
-        </select>
+    <div class="avatarPanel">
+        <label>Avatar Image:</label>
+        <img src="img/avatars/Avatar.jpg"/>
     </div>
-
-    <div>
-        <label for="denomination">Denomination:</label>
-        <select id="denomination">
-            <option value="baptist">Baptist</option>
-            <option value="presbyterian">Presbyterian</option>
-            <!-- ... -->
-        </select>
-    </div>
-
-    <div>
-        <label for="website">Website:</label>
-        <input id="website" type="text"/>
-    </div>
-
-    <div>
-        <label for="twitterName">Twitter Name:</label>
-        <input id="twitterName" type="text"/>
-    </div>
-
-    <button>Save</button>
-    <button>Cancel</button>
-</form>
+</div>
 
 </body>
 </html>
