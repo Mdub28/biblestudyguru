@@ -37,62 +37,6 @@
 }
 
 
-
-/**************/
-/** Dashboard */
-/**************/
-
-.dashboard {
-    margin: 10px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-}
-
-/* Header */
-
-.dashboardHeader {
-    position: relative;
-    height: 100px;
-}
-
-/* Title Panel */
-
-.titlePanel {
-    position: absolute;
-}
-
-.logo {
-    border-radius: 5px;
-}
-
-.productTitle {
-    position: absolute;
-    top: 0;
-    left: 100px;
-    width: 250px;
-}
-
-/* Login */
-
-.loginPanel {
-    border: 1px solid black;
-    background-color: lightgray;
-    position: absolute;
-    right: 0;
-    width: 400px;
-    top: 15px;
-    padding: 20px;
-    display: inline-block;
-    border-radius: 5px;
-}
-
-.loginField {
-    display: inline-block;
-}
-
 /* Welcome Panel */
 
 .welcomePanel {
@@ -100,7 +44,7 @@
     top: 100px;
     bottom: 0;
     left: 0;
-    right: 400px;
+    right: 420px;
     border: 1px solid black;
     border-radius: 5px;
     margin-right: 10px;
@@ -113,7 +57,7 @@
     border-radius: 5px;
     border: 1px solid black;
     margin: 0 auto;
-    width: 350px;
+    width: 370px;
 }
 
 .passageSearchPanel label {
@@ -136,7 +80,7 @@
     right: 0;
     bottom: 0;
     top: 100px;
-    width: 400px;
+    width: 420px;
     border: 1px solid black;
     border-radius: 5px;
     padding: 0 15px 15px 15px;
@@ -196,70 +140,4 @@
 .profilePanel select {
     float: right;
     width: 250px;
-}
-
-
-
-/**************/
-/** Dashboard */
-/**************/
-
-/* Branding */
-
-.brandingPanel {
-    background-color: green;
-    height: 100px;
-}
-
-.activityFeed {
-    height: 200px;
-    background-color: gray;
-}
-
-.studyPanel {
-    background-color: lightgray;
-    padding: 5px;
-    margin: 5px;
-    border: 1px solid black;
-}
-
-.courseTitle {
-    display: inline-block;
-    margin: 0;
-}
-
-.courseDescription {
-    font-style: italic;
-}
-
-.passagePanel {
-    background-color: lightgray;
-    padding: 5px;
-    margin: 5px;
-    border: 1px solid black;
-}
-
-.passageContent {
-    color: red
-}
-
-.annotationTextarea {
-    background-color: gray;
-}
-
-.annotationList {
-    border: 1px solid black;
-    background-color: lightgray;
-    overflow-y: scroll;
-    width: 200px;
-    height: 150px;
-}
-
-.annotationEntry {
-    border-bottom: 1px solid gray;
-    padding-left: 30px;
-}
-
-.annotationText {
-
 }

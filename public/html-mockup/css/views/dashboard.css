@@ -1,0 +1,100 @@
+.dashboard {
+    margin: 10px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+/* Header */
+
+.dashboardHeader {
+    overflow: hidden;
+}
+
+/* Title Panel */
+
+.titlePanel {
+    float: left;
+}
+
+img.logo {
+    float: left;
+    border-radius: 5px;
+}
+
+.productTitle {
+    float: left;
+    padding-left: 10px;
+}
+
+/* Login */
+
+.loginPanel {
+    float: right;
+    border: 1px solid black;
+    background-color: lightgray;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.loginField {
+    display: inline-block;
+}
+
+
+
+
+.studyPanel {
+    background-color: lightgray;
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid black;
+}
+
+.courseTitle {
+    display: inline-block;
+    margin: 0;
+}
+
+.courseDescription {
+    font-style: italic;
+}
+
+.passagePanel {
+    background-color: lightgray;
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid black;
+}
+
+.passageContent {
+    color: red
+}
+
+.annotationTextarea {
+    background-color: gray;
+}
+
+.annotationList {
+    border: 1px solid black;
+    background-color: lightgray;
+    overflow-y: scroll;
+    width: 200px;
+    height: 150px;
+}
+
+.annotationEntry {
+    border-bottom: 1px solid gray;
+    padding-left: 30px;
+}
+
+.annotationText {
+
+}
+
+.activityFeed {
+    height: 200px;
+    background-color: gray;
+}
