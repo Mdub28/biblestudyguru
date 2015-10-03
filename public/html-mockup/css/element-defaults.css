@@ -2,6 +2,10 @@
 	default element styles
 */
 
+* {
+    box-sizing: border-box;
+}
+
 body {
 	font-size: 18px;
 }
