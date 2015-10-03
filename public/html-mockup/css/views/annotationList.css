@@ -15,10 +15,14 @@
     margin-right: 10px;
 }
 
-.upAnnotation, .downAnnotation {
+.upAnnotation,
+.downAnnotation,
+.addAnnotation {
     display: block;
     background-color: white;
     border: 0;
+    width: 100%;
+    font-size: 20px;
 }
 
 .annotationProfileThumbanil {
