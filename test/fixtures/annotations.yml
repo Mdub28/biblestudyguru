@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  annotation_type_id: 
+  content: MyText
+  private: false
+  bible_book_id: 
+  chapter_start: 1
+  verse_start: 1
+  character_start: 1
+  chapter_end: 1
+  verse_end: 1
+  character_end: 1
+  bible_translation_id: 
+  deleted: false
+
+two:
+  user_id: 
+  annotation_type_id: 
+  content: MyText
+  private: false
+  bible_book_id: 
+  chapter_start: 1
+  verse_start: 1
+  character_start: 1
+  chapter_end: 1
+  verse_end: 1
+  character_end: 1
+  bible_translation_id: 
+  deleted: false
