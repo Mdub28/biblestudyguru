@@ -15,7 +15,7 @@
     margin-right: 10px;
 }
 
-.upAnnotation, .downAnnotation {
+.upAnnotation, .downAnnotation, .addToStudy {
     display: block;
     background-color: white;
     border: 0;
