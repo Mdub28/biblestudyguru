@@ -11,8 +11,24 @@ if AnnotationType.count == 0
   end
 end
 
-if Denomination.count ==0
+if Denomination.count == 0
   Denomination::TYPES.each do | type |
     Denomination.create(description: type)
+  end
+end
+
+if BibleTranslation.count == 0 
+  Remote::Translation.all.each do |translation|
+    BibleTranslation.create(
+      description: translation.description,
+      abbreviation: translation.abbreviation,
+      language: translation.language
+    )
+  end
+end
+
+if BibleBook.count == 0 
+  Remote::Book.all.each do |book|
+    BibleBook.create(description: book.description)
   end
 end

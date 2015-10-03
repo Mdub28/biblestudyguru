@@ -4,7 +4,7 @@ class CreateAnnotations < ActiveRecord::Migration
       t.references :user, index: true, foreign_key: true
       t.references :annotation_type, index: true, foreign_key: true
       t.text :content
-      t.boolean :private, default => false
+      t.boolean :private, default: false
       t.references :bible_book, index: true, foreign_key: true
       t.integer :chapter_start
       t.integer :verse_start
