@@ -4,12 +4,20 @@
     margin-bottom: 10px;
     border: 1px solid black;
     border-radius: 15px;
-    padding: 0 15px 0 15px;
+    padding: 15px 15px 15px 15px;
+}
+
+.iconButton {
+    padding: 5px 1px 3px 1px
 }
 
 .courseTitle {
     display: inline-block;
-    margin-bottom: 0;
+    margin: 0;
+}
+
+.exportHandout {
+    height: 25px;
 }
 
 .passageTime {
@@ -17,7 +25,16 @@
     font-size: x-small;
 }
 
-.passageTime button {
-    background-color: transparent;
-    border: none;
+.noTimeAssigned {
+    opacity: .3;
+}
+
+.hasAnnotation {
+    color: blue;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.passageHeader h2 {
+    display: inline-block;
 }
