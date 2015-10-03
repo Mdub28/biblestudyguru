@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151003175210) do
+ActiveRecord::Schema.define(version: 20151003181437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,29 @@ ActiveRecord::Schema.define(version: 20151003175210) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "annotations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "annotation_type_id"
+    t.text     "content"
+    t.boolean  "private"
+    t.integer  "bible_book_id"
+    t.integer  "chapter_start"
+    t.integer  "verse_start"
+    t.integer  "character_start"
+    t.integer  "chapter_end"
+    t.integer  "verse_end"
+    t.integer  "character_end"
+    t.integer  "bible_translation_id"
+    t.boolean  "deleted"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "annotations", ["annotation_type_id"], name: "index_annotations_on_annotation_type_id", using: :btree
+  add_index "annotations", ["bible_book_id"], name: "index_annotations_on_bible_book_id", using: :btree
+  add_index "annotations", ["bible_translation_id"], name: "index_annotations_on_bible_translation_id", using: :btree
+  add_index "annotations", ["user_id"], name: "index_annotations_on_user_id", using: :btree
 
   create_table "bible_books", force: :cascade do |t|
     t.string   "description"
@@ -82,6 +105,10 @@ ActiveRecord::Schema.define(version: 20151003175210) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "annotations", "annotation_types"
+  add_foreign_key "annotations", "bible_books"
+  add_foreign_key "annotations", "bible_translations"
+  add_foreign_key "annotations", "users"
   add_foreign_key "courses", "users"
   add_foreign_key "user_actions", "users"
 end
