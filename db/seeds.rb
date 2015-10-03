@@ -5,3 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+if AnnotationType.count == 0
+  AnnotationType::TYPES.each do | type |
+    AnnotationType.create(description: type)
+  end
+end
+
+if Denomination.count ==0
+  Denomination::TYPES.each do | type |
+    Denomination.create(description: type)
+  end
+end
