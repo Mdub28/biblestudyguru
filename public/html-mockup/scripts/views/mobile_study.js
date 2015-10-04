@@ -147,7 +147,7 @@ $checkboxes.change(function() {
     // turn names of checked checkboxes into a selector:
     // [data-filter=name1],[data-filter=name2]
     var selector = $checkboxes.filter(function(i, $checkbox) {
-        return $checkbox.is('checked');
+        return $checkbox.prop('checked');
     }).map(function(i, $checkbox) {
         return '[data-filter=' + $checkbox.name + ']';
     }).join(',');
