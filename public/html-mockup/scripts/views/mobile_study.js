@@ -70,7 +70,7 @@ function renderStudy(data) {
     if (study_passage.annotations.length !== 0) {
         $annotationList = $('<ul class="verse-notes no-bullets content-col"></ul>');
         $.each(study_passage.annotations, function(index, annotation) {
-            var $label = $('<label/>').append($('<input type="checkbox">')).append(annotation.content);
+            var $label = $('<label/>').append($('<input type="checkbox">')).append(annotation.annotation_type.description + ': ' + annotation.content);
             var $annotationElement = $('<li class="passageAnnotation"/>').attr('data-filter', annotation.annotation_type.description).append($label);
             $annotationElement.on('change', function() {
                 $annotationElement.toggleClass('annotationRead');
