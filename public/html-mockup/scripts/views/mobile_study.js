@@ -1,7 +1,5 @@
 var currentPassageIndex = 0;
-var passages;
 var studyTimer;
-
 var passages = [
     {
         name: 'Acts 2:1-4',
@@ -64,7 +62,10 @@ function fetchData() {
     var serviceUrl = '/api/v1/studies/' + studyId;
     $.getJSON(serviceUrl, function(response) {
         if (response.status == 'success') {
-            bindData(response.data);
+            var study = response.data;
+            $('#studyTitle').text(study.name);
+            passages = study.study_passages;
+            bindCurrentPassage();
         }
         else {
             alert('Error fetching study');
@@ -73,15 +74,18 @@ function fetchData() {
 }
 
 function renderStudy(data) {
-    var prefix = data.prefix;
     var passage = data.passage;
+    var prefix = data.prefix;
 
-    var docFrag = document.createDocumentFragment();
+    var $docFrag = $(document.createDocumentFragment());
 
-    var $h2 = $('<h2 class="content-col"/>').text(prefix + ' ' + passage.name);
-    var $p = $('<p class="content-col"/>').text(passage.text).attr('data-filter', 3);
-    var $docFrag = $(docFrag);
-    $docFrag.append($h2).append($p);
+    var $h2 = $('<h2 class="content-col"/>').text(prefix + ' ' + buildPassageReference(passage.bible_passage));
+    $docFrag.append($h2);
+
+    $.each(passage.bible_passage.chapters, function(index, chapter) {
+        var $p = $('<p class="content-col"/>').text(chapter.chapter_title).attr('data-filter', 3);
+        $docFrag.append($p);
+    });
 
     if (passage.annotations.length !== 0) {
         $annotationList = $('<ul class="verse-notes no-bullets content-col"></ul>');
@@ -93,11 +97,28 @@ function renderStudy(data) {
             });
 
             $annotationList.append($annotationElement);
-        })
+        });
 
         $docFrag.append($annotationList);
     }
     return $docFrag;
+}
+
+function buildPassageReference(bible_passage) {
+    var firstChapter = bible_passage.chapters[0];
+    var firstVerseNo = firstChapter.verses[0].verse_number;
+    var lastChapter = bible_passage.chapters[bible_passage.chapters.length - 1];
+    var lastVerseNo = lastChapter.verses[lastChapter.verses.length - 1].verse_number;
+
+    var firstChapterNo = firstChapter.chapter_id;
+    var lastChapterNo = lastChapter.chapter_id;
+
+    if (firstChapterNo === lastChapterNo) {
+        return bible_passage.description + ' ' + firstChapterNo + ':' + firstVerseNo + '-' + lastVerseNo;
+    }
+    else {
+        return bible_passage.description + ' ' + firstChapterNo + ':' + firstVerseNo + '-' + lastChapterNo + ':' + lastVerseNo;
+    }
 }
 
 function bindCurrentPassage() {
@@ -111,21 +132,20 @@ function bindCurrentPassage() {
         var passage = passages[currentPassageIndex];
         $studyContent.empty();
 
-        $studyContent.append(renderStudy({
-            prefix: prefix,
-            passage: passage
-        }));
+        if (passage) {
+            $studyContent.append(renderStudy({
+                prefix: prefix,
+                passage: passage
+            }));
 
-        studyTimer.reset(passage.duration);
+            studyTimer.reset(passage.duration);
+        }
+        else {
+            var $noPassagesMessage = $('<p class="content-col"/>').text('No passages found in this Study :,-(');
+            $studyContent.append($noPassagesMessage);
+        }
         $studyContent.fadeIn('fast');
     });
-}
-
-function bindData(study) {
-    // Set name.
-    $('#studyTitle').text(study.name);
-
-    bindCurrentPassage();
 }
 
 // setup modal
