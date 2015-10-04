@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Study:</strong>
+  <%= @study_passage.study %>
+</p>
+
+<p>
+  <strong>Bible book:</strong>
+  <%= @study_passage.bible_book %>
+</p>
+
+<p>
+  <strong>Chapter start:</strong>
+  <%= @study_passage.chapter_start %>
+</p>
+
+<p>
+  <strong>Verse start:</strong>
+  <%= @study_passage.verse_start %>
+</p>
+
+<p>
+  <strong>Chapter end:</strong>
+  <%= @study_passage.chapter_end %>
+</p>
+
+<p>
+  <strong>Verse end:</strong>
+  <%= @study_passage.verse_end %>
+</p>
+
+<p>
+  <strong>Bible translation:</strong>
+  <%= @study_passage.bible_translation %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @study_passage.position %>
+</p>
+
+<p>
+  <strong>Bible passage annotation:</strong>
+  <%= @study_passage.bible_passage_annotation %>
+</p>
+
+<p>
+  <strong>Duration in minutes:</strong>
+  <%= @study_passage.duration_in_minutes %>
+</p>
+
+<%= link_to 'Edit', edit_study_passage_path(@study_passage) %> |
+<%= link_to 'Back', study_passages_path %>

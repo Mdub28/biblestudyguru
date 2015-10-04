@@ -59,6 +59,7 @@ button.field-row {
     bottom: 0;
     right: 0;
     text-align: center;
+    background: rgba(0,0,0,.7);
 }
 
 .modal-backdrop.active {
@@ -68,7 +69,11 @@ button.field-row {
 .modal {
     text-align: left;
     display: inline-block;
-    margin: 14% auto 0;
+    margin: 0 auto;
     background: #eee;
     border: 1em solid #ddd;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
