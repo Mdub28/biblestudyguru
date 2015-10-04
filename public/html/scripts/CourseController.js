@@ -1,7 +1,8 @@
 (function(){
     var app = angular.module("bibleStudyGuru");
 
-	var CourseController = function($scope) {
+	//var CourseController = function($scope, ModalService) {
+    var CourseController = function($scope) {
         //Queries the API for the activity list
         var queryRawCourses = function(){
             //TODO: This is going to end up being a promise object generated from the HTTP service
@@ -40,6 +41,18 @@
             return courses;
         };
         
+        
+        // $scope.onClickAddStudy = function(){
+            // ModalService.showModal({
+            // templateUrl: "html/AddStudyDialogue.html",
+            // controller: "AddStudyDialogueController"
+          // }).then(function(modal) {
+            // modal.close.then(function(result) {
+              // console.log(result);
+            // });
+          // });
+        // };
+                
         
         $scope.courses = getCourses();
 	};
