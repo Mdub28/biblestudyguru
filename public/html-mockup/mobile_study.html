@@ -90,6 +90,33 @@
             });
         }
 
+        function renderStudy(data) {
+            var prefix = data.prefix;
+            var passage = data.passage;
+
+            var docFrag = document.createDocumentFragment();
+
+            var $h2 = $('<h2 class="content-col"/>'.text(prefix + ' ' + passage.name));
+            var $p = $('<p class="content-col"/>').text(passage.text);
+            docFrag.append($h2).append($p);
+
+            if (passage.annotations.length !== 0) {
+                $annotationList = $('<ul class="verse-notes no-bullets content-col"></ul>');
+                $.each(passage.annotations, function(index, annotation) {
+                    var $label = $('<label/>').append($('<input type="checkbox">')).append(annotation.text);
+                    var $annotationElement = $('<li class="passageAnnotation"/>').append($label);
+                    $annotationElement.on('change', function() {
+                        $annotationElement.toggleClass('annotationRead');
+                    });
+
+                    $annotationList.append($annotationElement);
+                })
+
+                docFrag.append($annotationList);
+            }
+            return docFrag;
+        }
+
         function bindCurrentPassage() {
             var $studyContent = $('#studyContent');
             $studyContent.fadeOut('fast', function() {
@@ -100,24 +127,13 @@
 
                 var passage = passages[currentPassageIndex];
                 $studyContent.empty();
-                $studyContent.append('<h2 class="content-col">' + prefix + ' ' + passage.name + '</h2>');
-                $studyContent.append('<p class="content-col">' + passage.text + '</h2>');
+
+                $studyContent.append(renderStudy({
+                    prefix: prefix,
+                    passage: passage
+                }));
+
                 studyTimer.reset(passage.duration);
-                if (passage.annotations.length !== 0) {
-
-                    $annotationList = $('<ul class="verse-notes no-bullets content-col"></ul>');
-                    $.each(passage.annotations, function(index, annotation) {
-                        var $annotationElement = $('<li class="passageAnnotation"><label><input type="checkbox">' + annotation.text + '</label></li>');
-                        $annotationElement.on('change', function() {
-                            $annotationElement.toggleClass('annotationRead');
-                        });
-
-                        $annotationList.append($annotationElement);
-                    })
-
-                    $studyContent.append($annotationList);
-                }
-
                 $studyContent.fadeIn('fast');
             });
         }
@@ -127,17 +143,13 @@
             $('#studyTitle').text(study.name);
 
             bindCurrentPassage();
-
-            <!-- scripts -->
-
-            // setup modal
-            var filterModal = new Modal('filter');
-            on(qs('.show-filters-btn'), 'click', function filterButtonClick() {
-                filterModal.show();
-            });
-
-
         }
+
+        // setup modal
+        var filterModal = new Modal('filter');
+        on(qs('.show-filters-btn'), 'click', function filterButtonClick() {
+            filterModal.show();
+        });
     </script>
 </head>
 <body id="studyBody" data-enhance="false">
