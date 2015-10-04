@@ -39,6 +39,6 @@
     float: right;
 }
 
-.filter-modal {
-    width: 200px;
+.filter-modal .modal {
+    width: 300px;
 }
