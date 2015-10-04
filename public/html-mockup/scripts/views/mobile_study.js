@@ -150,7 +150,7 @@ $checkboxes.change(function() {
         return checkbox.checked;
     }).map(function(i, checkbox) {
         return '[data-filter=' + checkbox.name + ']';
-    }).join(',');
+    }).get().join(',');
 
     $('#studyContent').find(selector).show();
 })
