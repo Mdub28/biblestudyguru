@@ -11,9 +11,27 @@
     <link rel="stylesheet" href="css/helpers.css">
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/views/mobile_study.css">
+
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>
+
     <script type="text/javascript">
         $(function() {
+            listenForSwipes();
+            fetchData();
+        });
+
+        function listenForSwipes() {
+            $('#studyBody').on('swipeleft', function(e) {
+                console.log('Swipped Left!');
+            });
+
+            $('#studyBody').on('swiperight', function(e) {
+                console.log('Swipped Right!');
+            });
+        }
+
+        function fetchData() {
             var url = window.location.search;
             var queryParameter = '?studyId=';
             var studyId = url.substring(url.indexOf(queryParameter) + queryParameter.length);
@@ -27,7 +45,7 @@
                     alert('Error fetching study');
                 }
             });
-        });
+        }
 
         function bindData(study) {
             // Set name and description.
