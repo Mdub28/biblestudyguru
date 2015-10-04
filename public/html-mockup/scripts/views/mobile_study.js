@@ -79,7 +79,7 @@ function renderStudy(data) {
     var docFrag = document.createDocumentFragment();
 
     var $h2 = $('<h2 class="content-col"/>').text(prefix + ' ' + passage.name);
-    var $p = $('<p class="content-col"/>').text(passage.text).data('filter', 3);
+    var $p = $('<p class="content-col"/>').text(passage.text).attr('data-filter', 3);
     var $docFrag = $(docFrag);
     $docFrag.append($h2).append($p);
 
@@ -87,7 +87,7 @@ function renderStudy(data) {
         $annotationList = $('<ul class="verse-notes no-bullets content-col"></ul>');
         $.each(passage.annotations, function(index, annotation) {
             var $label = $('<label/>').append($('<input type="checkbox">')).append(annotation.text);
-            var $annotationElement = $('<li class="passageAnnotation"/>').data('filter', annotation.annotationType).append($label);
+            var $annotationElement = $('<li class="passageAnnotation"/>').attr('data-filter', annotation.annotationType).append($label);
             $annotationElement.on('change', function() {
                 $annotationElement.toggleClass('annotationRead');
             });
