@@ -1,6 +1,7 @@
 class Study < ActiveRecord::Base
   belongs_to :course
   has_many :study_passages
+  belongs_to :bible_book
 
   def to_h
     {
