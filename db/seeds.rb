@@ -29,6 +29,6 @@ end
 
 if BibleBook.count == 0 
   Remote::Book.all.each do |book|
-    BibleBook.create(description: book.description)
+    BibleBook.create(description: book.description, book_id: book.book_id)
   end
 end

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       resources :user_actions, only: [:index]
       resources :courses, only: [:index, :show, :create, :update, :destroy]
       resources :studies, only: [:index, :show, :create, :update, :destroy]
+      resources :bible_passages, only: [:show]
     end
   end
 
