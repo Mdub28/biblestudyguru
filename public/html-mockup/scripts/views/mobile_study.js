@@ -132,6 +132,8 @@ function buildPassageReference(bible_passage) {
 }
 
 function bindCurrentPassage() {
+    $checkboxes.prop('checked', true);
+
     var $studyContent = $('#studyContent');
     $studyContent.fadeOut('fast', function() {
         var prefix = '';
