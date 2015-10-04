@@ -33,8 +33,8 @@
         <button class="show-filters-btn"><i class="icon-filter"></i></button>
         <button class="timer-btn">0m 55s</button>
     </div>
-    <div class="modal-backdrop">
-        <div class="modal box filter-modal">
+    <div class="modal-backdrop filter-modal">
+        <div class="modal box">
             <h3>filter study content</h3>
             <ul class="filters no-bullets">
                 <li><label><input type="checkbox"> Scripture</label></li>
@@ -42,10 +42,17 @@
                 <li><label><input type="checkbox"> Commentary</label></li>
                 <li><label><input type="checkbox"> Video</label></li>
             </ul>
+            <button class="save">Save</button> or <button class="close">Cancel</button>
         </div>
     </div>
 
     <!-- scripts -->
-    <script src="script.js"></script>
+    <script src="scripts/helpers.js"></script>
+    <script>
+    var filterModal = new Modal('filter');
+    document.querySelector('.show-filters-btn').addEventListener('click', function filterButtonClick() {
+        filterModal.show();
+    });
+    </script>
 </body>
 </html>
