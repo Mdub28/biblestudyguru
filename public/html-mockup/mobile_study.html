@@ -59,9 +59,14 @@
         function bindCurrentPassage() {
             var $studyContent = $('#studyContent');
             $studyContent.fadeOut('fast', function() {
+                var prefix = '';
+                if (passages.length > 1) {
+                    prefix = 'Reading ' + (currentPassageIndex + 1) + '/' + passages.length + ':';
+                }
+
                 var passage = passages[currentPassageIndex];
                 $studyContent.empty();
-                $studyContent.append('<h2 class="content-col">' + passage.name + '</h2>')
+                $studyContent.append('<h2 class="content-col">' + prefix + ' ' + passage.name + '</h2>')
                 $studyContent.append('<p class="content-col">' + passage.text + '</h2>')
 
                 if (passage.annotations.length !== 0) {
