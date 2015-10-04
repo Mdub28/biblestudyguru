@@ -4,7 +4,7 @@
 
     <div ng-repeat="course in courses">
         <div class="studyPanel">
-            <h2 class="courseTitle">{{course.name}}</h2> <button>Add a study</button>
+            <h2 class="courseTitle">{{course.name}}</h2> <button ng-click="onClickAddStudy()">Add a study</button>
             <p class="courseDescription">{{course.description}}</p>
 
             <ol ng-repeat="study in course.studies">
