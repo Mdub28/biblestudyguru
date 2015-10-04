@@ -79,7 +79,7 @@ function renderStudy(data) {
     var docFrag = document.createDocumentFragment();
 
     var $h2 = $('<h2 class="content-col"/>').text(prefix + ' ' + passage.name);
-    var $p = $('<p class="content-col"/>').text(passage.text);
+    var $p = $('<p class="content-col"/>').text(passage.text).data('filter', 3);
     var $docFrag = $(docFrag);
     $docFrag.append($h2).append($p);
 
@@ -87,7 +87,7 @@ function renderStudy(data) {
         $annotationList = $('<ul class="verse-notes no-bullets content-col"></ul>');
         $.each(passage.annotations, function(index, annotation) {
             var $label = $('<label/>').append($('<input type="checkbox">')).append(annotation.text);
-            var $annotationElement = $('<li class="passageAnnotation"/>').append($label);
+            var $annotationElement = $('<li class="passageAnnotation"/>').data('filter', annotation.annotationType).append($label);
             $annotationElement.on('change', function() {
                 $annotationElement.toggleClass('annotationRead');
             });
@@ -130,6 +130,27 @@ function bindData(study) {
 
 // setup modal
 var filterModal = new Modal('filter');
-on(qs('.show-filters-btn'), 'click', function filterButtonClick() {
+$('.show-filters-btn').click(function() {
     filterModal.show();
 });
+
+
+// filtering
+var $checkboxes = $('.filters input[type=checkbox]');
+$checkboxes.change(function() {
+    // hide all filterable content
+    $('#studyContent').find('[data-filter]').hide();
+
+
+    // show content that matches a checked checkbox
+
+    // turn names of checked checkboxes into a selector:
+    // [data-filter=name1],[data-filter=name2]
+    var selector = $checkboxes.filter(function(i, $checkbox) {
+        return $checkbox.is('checked');
+    }).map(function(i, $checkbox) {
+        return '[data-filter=' + $checkbox.name + ']';
+    }).join(',');
+
+    $('#studyContent').find(selector).show();
+})
