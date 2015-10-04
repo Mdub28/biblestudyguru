@@ -60,6 +60,7 @@ button.field-row {
     right: 0;
     text-align: center;
     background: rgba(0,0,0,.7);
+    overflow-y: auto;
 }
 
 .modal-backdrop.active {
@@ -72,9 +73,6 @@ button.field-row {
     margin: 0 auto;
     background: #eee;
     border: 1em solid #ddd;
-    position: absolute;
-    top: 50%;
-    left: 50%;
 }
 
 .modal .close {
