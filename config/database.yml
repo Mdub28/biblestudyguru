@@ -23,8 +23,6 @@ default: &default
 
 development:
   <<: *default
-  username: test
-  password: secret
   database: src_development
 
   # The specified database role being used to connect to postgres.

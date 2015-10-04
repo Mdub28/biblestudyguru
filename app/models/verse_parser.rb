@@ -2,8 +2,8 @@ require 'fuzzy_match'
 class VerseParser
   attr_accessor :book, :verse_ranges
 
-  def initialize(verse_string)
-    self.book, self.verse_ranges = parse_book_verse(verse_string)
+  def initialize(verse_string=nil)
+    self.book, self.verse_ranges = parse_book_verse(verse_string) if verse_string.present?
   end
 
   def parse_book_verse(verse_string)
@@ -33,6 +33,18 @@ class VerseParser
         ret.merge(book)
       end
     end
+  end
+
+  def self.from_defined(book, start_chapter, start_verse, end_chapter, end_verse)
+    parser = new
+    parser.book = book
+    verse = Verse.new
+    verse.start_chapter = start_chapter
+    verse.end_chapter = end_chapter
+    verse.start_verse = start_verse
+    verse.end_verse = end_verse
+    parser.verse_ranges = [verse]
+    parser
   end
 
   def split_verse_ranges_on_chapter

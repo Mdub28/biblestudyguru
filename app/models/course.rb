@@ -5,4 +5,11 @@ class Course < ActiveRecord::Base
   def as_json(options={})
     super(include: [:studies])
   end
+
+  def to_h
+    {
+      id: id,
+      name: name
+    }
+  end
 end
