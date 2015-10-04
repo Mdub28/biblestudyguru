@@ -9,10 +9,21 @@
     <link rel="stylesheet" href="css/element-defaults.css">
     <link rel="stylesheet" href="css/helpers.css">
     <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/views/mobile_login.css">
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('#loginForm').submit(function (event) {
+                event.preventDefault();
+                window.location.href ='/html-mockup/mobile_studies.html';
+            })
+        });
+    </script>
 </head>
 <body>
     <h1 class="top-branding content-col">Bible Study Guru</h1>
-    <form class="login-form content-col">
+    <form id="loginForm" class="login-form content-col">
         <label class="field-row top">Username
             <input type="text" placeholder="Username">
         </label>

@@ -9,25 +9,44 @@
     <link rel="stylesheet" href="css/element-defaults.css">
     <link rel="stylesheet" href="css/helpers.css">
     <link rel="stylesheet" href="css/global.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            var serviceUrl = 'http://localhost:3000/api/v1/courses/';
+            $.getJSON(serviceUrl, function(response) {
+                if (response.status == 'success') {
+
+                    var courses = response.data;
+                    $.each(courses, function(index, course) {
+                        var $courseListItem = $('<li class="box"></li>');
+                        $courseListItem.append('<h2>' + course.name + '</h2>');
+                        $courseListItem.append('<p>' + course.description + '</p>');
+
+                        if (course.studies.length === 0) {
+                            $courseListItem.append('<p class="no-links-msg">There are no studies for this course</p>')
+                        }
+                        else {
+                            var $studyList = $('<ul class="study-link-list"></ul>');
+                            $courseListItem.append($studyList);
+
+                            $.each(course.studies, function(index, study) {
+                                $studyList.append('<li><a href="/html-mockup/mobile_study.html?studyId=' + study.id + '">' + study.name + '</a></li>');
+                            });
+                        }
+
+                        $('#courseList').append($courseListItem);
+                    });
+
+                }
+            });
+        });
+    </script>
 </head>
 <body>
     <h1 class="top-branding content-col">Bible Study Guru</h1>
     <p class="content-col">Welcome back David! Here are your courses:</p>
-    <ul class="study-list content-col">
-        <li class="box">
-            <h2>Study in John</h2>
-            <p>Introduction course to John for high schoolers.</p>
-            <ul class="study-link-list">
-                <li><a href="">Introduction (John 1:1-20)</a></li>
-                <li><a href="">Gather Disciples (John 1:20-51)</a></li>
-                <li><a href="">Wedding Feast (John 2:1-11)</a></li>
-            </ul>
-        </li>
-        <li class="box">
-            <h2>Lectionary</h2>
-            <p>Sunday reading studies for Wednesday bible study group.</p>
-            <p class="no-links-msg">There are no studies for this course</p>
-        </li>
+    <ul id="courseList" class="study-list content-col">
+        <!-- Courses get injected here... -->
     </ul>
 </body>
 </html>
