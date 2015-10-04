@@ -34,6 +34,16 @@ module DigitalBiblePlatform
       file = response.find {|book| book.book_id==book_short_name}.path
       "#{base_url}/#{file}"
     end
+
+    def verses(book_id, chapter, start_verse, end_verse, overrides={})
+      options = @defaults.merge(overrides.merge({book:book_id, media: 'text'}))
+      connect!('/library/verse', {
+        book_id: book_id,
+        chapter_id: chapter,
+        verse_start: start_verse,
+        verse_end: end_verse,
+        dam_id: DamId.full(options) })
+    end
     
     def books(overrides={})
       options = @defaults.merge(overrides)
