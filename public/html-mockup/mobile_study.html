@@ -16,18 +16,27 @@
     <script type="text/javascript" src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>
 
     <script type="text/javascript">
+        var currentPassageIndex = 0;
+        var passages;
+
         $(function() {
             listenForSwipes();
             fetchData();
         });
 
         function listenForSwipes() {
-            $('#studyBody').on('swipeleft', function(e) {
-                console.log('Swipped Left!');
+            $('#studyBody').on('swiperight', function(e) {
+                if (currentPassageIndex > 0) {
+                    currentPassageIndex--;
+                    bindCurrentPassage()
+                }
             });
 
-            $('#studyBody').on('swiperight', function(e) {
-                console.log('Swipped Right!');
+            $('#studyBody').on('swipeleft', function(e) {
+                if (currentPassageIndex < passages.length-1) {
+                    currentPassageIndex++;
+                    bindCurrentPassage()
+                }
             });
         }
 
@@ -47,13 +56,37 @@
             });
         }
 
+        function bindCurrentPassage() {
+            var passage = passages[currentPassageIndex];
+            var $studyContent = $('#studyContent');
+            $studyContent.empty();
+            $studyContent.append('<h2 class="content-col">' + passage.name + '</h2>')
+            $studyContent.append('<p class="content-col">' + passage.text + '</h2>')
+
+            if (passage.annotations.length !== 0) {
+
+                $annotationList = $('<ul class="verse-notes no-bullets content-col"></ul>');
+                $.each(passage.annotations, function(index, annotation) {
+                    var $annotationElement = $('<li><label><input type="checkbox">' + annotation.text + '</label></li>');
+                    $annotationElement.on('change', function() {
+                        $annotationElement.toggleClass('annotationRead');
+                    });
+
+                    $annotationList.append($annotationElement);
+                })
+
+                $studyContent.append($annotationList);
+            }
+
+        }
+
         function bindData(study) {
             // Set name and description.
             $('#studyTitle').text(study.name);
             $('#studyDescription').text(study.description);
 
             // Generate passages...
-            var passages = [
+            passages = [
                 {
                     name: 'Acts 2:1-4',
                     text: 'When the day of Pentecost had come, they were all together in one place. 2 And suddenly a sound came from heaven like the rush of a mighty wind, and it filled all the house where they were sitting. 3 And there appeared to them tongues as of fire, distributed and resting on each one of them. 4 And they were all filled with the Holy Spirit and began to speak in other tongues, as the Spirit gave them utterance.',
@@ -82,27 +115,7 @@
                 }
             ];
 
-            var $studyContent = $('#studyContent');
-            $.each(passages, function(key, passage) {
-                $studyContent.append('<h2 class="content-col">' + passage.name + '</h2>')
-                $studyContent.append('<p class="content-col">' + passage.text + '</h2>')
-
-                if (passage.annotations.length !== 0) {
-
-                    $annotationList = $('<ul class="verse-notes no-bullets content-col"></ul>');
-                    $.each(passage.annotations, function(index, annotation) {
-                        var $annotationElement = $('<li><label><input type="checkbox">' + annotation.text + '</label></li>');
-                        $annotationElement.on('change', function() {
-                            $annotationElement.toggleClass('annotationRead');
-                        });
-
-                        $annotationList.append($annotationElement);
-                    })
-
-                    $studyContent.append($annotationList);
-                }
-
-            });
+            bindCurrentPassage();
         }
     </script>
 </head>
