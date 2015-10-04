@@ -1,8 +1,3 @@
-/*
-    specific styles
-*/
-
-
 .top-branding {
     text-align: center;
 }
@@ -29,8 +24,30 @@
 
 
 
-/* single study view */
+/*
+    single study view
+*/
 
+/* .controls-footer */
+.verses {
+    /* make room for fixed footer */
+    margin-bottom: 83px;
+}
+
+.controls-footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #eee;
+}
+
+.controls-footer > div {
+    overflow: hidden;
+}
+
+
+/* footer buttons */
 .show-filters-btn {
     float: left;
     font-size: x-large;
@@ -41,6 +58,9 @@
     font-size: x-large;
 }
 
+
+
+/* modal */
 .filter-modal .modal {
     width: 300px;
     position: absolute;
