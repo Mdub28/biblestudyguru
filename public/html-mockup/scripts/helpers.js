@@ -79,12 +79,14 @@ Timer.prototype.getElapsed = function getElapsed() {
 };
 
 Timer.prototype.start = function startTimer() {
+    this.updateColor();
     this.startTime = Date.now();
     var t = this;
     function decrement() {
         t.seconds--;
         t.button.textContent = t.getElapsed();
         t.timer = setTimeout(decrement, 1000);
+        t.updateColor();
     }
     t.timer = setTimeout(decrement, 1000);
 };
@@ -93,4 +95,9 @@ Timer.prototype.stop = function stopTimer() {
     if (this.timer === null) return;
     clearTimeout(this.timer);
     this.timer = null;
+    this.button.style.color = 'black';
 };
+
+Timer.prototype.updateColor = function updateColor() {
+    this.button.style.color = this.seconds < 0 ? 'red' : 'green';
+}
