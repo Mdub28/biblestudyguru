@@ -64,10 +64,10 @@
                 }
             ];
 
-            var $studyBody = $('#studyBody');
+            var $studyContent = $('#studyContent');
             $.each(passages, function(key, passage) {
-                $studyBody.append('<h2 class="content-col">' + passage.name + '</h2>')
-                $studyBody.append('<p class="content-col">' + passage.text + '</h2>')
+                $studyContent.append('<h2 class="content-col">' + passage.name + '</h2>')
+                $studyContent.append('<p class="content-col">' + passage.text + '</h2>')
 
                 if (passage.annotations.length !== 0) {
 
@@ -81,7 +81,7 @@
                         $annotationList.append($annotationElement);
                     })
 
-                    $studyBody.append($annotationList);
+                    $studyContent.append($annotationList);
                 }
 
             });
@@ -92,29 +92,15 @@
     <h1 id="studyTitle" class="top-branding content-col"><!-- Study Title Injected Here --></h1>
     <p id="studyDescription" class="content-col"><!-- Study Description Injected Here --></p>
 
+    <div id="studyContent">
 
+    </div>
 
-<!--
-    <h2 >Acts 2:1-11 (1 of 3)</h2>
-    <ol class="verses content-col">
-        <li class="box">verse text
-            <ul class="verse-notes no-bullets">
-                <li><label><input type="checkbox"> question 1</label></li>
-                <li><label><input type="checkbox"> question 2</label></li>
-                <li><label><input type="checkbox"> etc.</label></li>
-            </ul>
-        </li>
-        <li class="box">verse text
-            <ul class="verse-notes no-bullets">
-                <li><label><input type="checkbox"> question 1</label></li>
-                <li><label><input type="checkbox"> etc.</label></li>
-            </ul>
-        </li>
-    </ol>
     <div class="controls-footer content-col">
         <button class="show-filters-btn"><i class="icon-filter"></i></button>
         <button class="timer-btn">0m 55s</button>
     </div>
+
     <div class="modal-backdrop">
         <div class="modal box filter-modal">
             <h3>filter study content</h3>
@@ -126,6 +112,6 @@
             </ul>
         </div>
     </div>
-    -->
+
 </body>
 </html>
