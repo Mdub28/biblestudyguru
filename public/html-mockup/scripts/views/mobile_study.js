@@ -78,7 +78,7 @@ function renderStudy(data) {
 
     var docFrag = document.createDocumentFragment();
 
-    var $h2 = $('<h2 class="content-col"/>').text(prefix + ' ' + passage.name));
+    var $h2 = $('<h2 class="content-col"/>').text(prefix + ' ' + passage.name);
     var $p = $('<p class="content-col"/>').text(passage.text);
     docFrag.append($h2).append($p);
 
