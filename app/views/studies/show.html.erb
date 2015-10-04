@@ -1,14 +1,67 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Course:</strong>
-  <%= @study.course %>
-</p>
-
-<p>
-  <strong>Position:</strong>
-  <%= @study.position %>
-</p>
-
-<%= link_to 'Edit', edit_study_path(@study) %> |
-<%= link_to 'Back', studies_path %>
+<div class='welcomePanel' style='bottom: inherit;'>
+  <div class="passageHeader">
+      <h2>Course: Lectionary - Study: Pentecostal Sunday</h2>
+      <button class="iconButton" title="Click to delete passage"> <i class="icon-pencil"></i></button>
+      <button class="iconButton" title="Click to delete passage"> <i class="icon-bin"></i></button>
+      <button class="exportHandout">Export Handout</button>
+      <div class="passageSearchPanel" style="width: 400px;">
+        <%= form_tag "/studies/#{@study.id}/study_passages/", method: :post do %> 
+          <label for="biblePassage">Add a Passage:</label>
+          <input id="biblePassage" name='query' type="text" class="ng-pristine ng-untouched ng-valid">
+          <%= submit_tag 'Add' %>
+        <% end %>
+      </div>
+  </div>
+  <%- @study.study_passages.each do |study_passage| %>
+  <div class="passagePanel">
+  <h3 class="courseTitle"><%=study_passage.description%></h3>
+      <button class="iconButton" title="Click to delete passage"> <i class="icon-bin"></i></button>
+      <span class="passageTime">
+          10 mins
+          <button class="iconButton"><i class="icon-clock"></i></button>
+      </span>
+      <p class="passageContent"><span class="hasAnnotation">
+        <%- study_passage.bible_passage.chapters.values.each_with_index do |chapter, index| %>
+          <%- if index != 0 %>
+            <br />
+          <%- end %>
+          <strong><%= chapter.chapter_title %></strong>
+          <br />
+          <%- chapter.verses.each do |verse| %>
+            <span class="hasAnnotation"><%=verse.verse_number%></span> <%=verse.content%>
+          <%- end %>
+        <%- end %>
+  </div>
+  <%- end %>
+</div>
+<div class='activityFeedPanel' style='bottom: inherit;'>
+<ol id="annotationList">
+    <li>
+        <div class="annotationControls">
+            <img src="/img/avatars/user-1.png" class="annotationProfileThumbanil"/>
+            <button class="upAnnotation"><i class="icon-circle-up"></i></button>
+            <button class="downAnnotation"><i class="icon-circle-down"></i></button>
+            <button class="addAnnotation">+</button>
+        </div>
+        <p class="annotationText">These events take place after the Ascension. Everyone is together praying in expectation of what God would do.</p>
+    </li>
+    <li>
+        <div class="annotationControls">
+            <img src="/img/avatars/user-4.png" class="annotationProfileThumbanil"/>
+        </div>
+        <p class="annotationText">These events take place after the Ascension. Everyone is together praying</p>
+    </li>
+    <li>
+        <div class="annotationControls">
+            <img src="/img/avatars/user-3.png" class="annotationProfileThumbanil"/>
+        </div>
+        <p class="annotationText">These events take place after the Ascension. Everyone is together praying</p>
+    </li>
+    <li>
+        <div class="annotationControls">
+            <img src="/img/avatars/user-1.png" class="annotationProfileThumbanil"/>
+        </div>
+        <p class="annotationText">These events take place after the Ascension. Everyone is together praying</p>
+    </li>
+</ol>
+</div>
