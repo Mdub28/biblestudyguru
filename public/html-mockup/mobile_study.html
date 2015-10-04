@@ -68,7 +68,7 @@
 
                     $annotationList = $('<ul class="verse-notes no-bullets content-col"></ul>');
                     $.each(passage.annotations, function(index, annotation) {
-                        var $annotationElement = $('<li><label><input type="checkbox">' + annotation.text + '</label></li>');
+                        var $annotationElement = $('<li class="passageAnnotation"><label><input type="checkbox">' + annotation.text + '</label></li>');
                         $annotationElement.on('change', function() {
                             $annotationElement.toggleClass('annotationRead');
                         });
@@ -94,7 +94,7 @@
                     name: 'Acts 2:1-4',
                     text: 'When the day of Pentecost had come, they were all together in one place. 2 And suddenly a sound came from heaven like the rush of a mighty wind, and it filled all the house where they were sitting. 3 And there appeared to them tongues as of fire, distributed and resting on each one of them. 4 And they were all filled with the Holy Spirit and began to speak in other tongues, as the Spirit gave them utterance.',
                     annotations: [
-                        {text: 'Question 1'},
+                        {text: 'Question 1 which is very long and will test to see what happens with wordwrap here.'},
                         {text: 'Question 2'},
                         {text: 'Question 3'}
                     ]
