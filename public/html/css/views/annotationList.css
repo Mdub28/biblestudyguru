@@ -1,0 +1,31 @@
+#annotationList {
+    list-style-type: none;
+    padding-left: 0;
+
+    width: 150px;
+}
+
+#annotationList li {
+    padding-bottom: 10px;
+    overflow: hidden;
+}
+
+.annotationControls {
+    float: left;
+    margin-right: 10px;
+}
+
+.upAnnotation, .downAnnotation {
+    display: block;
+    background-color: white;
+    border: 0;
+}
+
+.annotationProfileThumbanil {
+    border-radius: 5px;
+    width: 40px;
+}
+
+.annotationText {
+    margin-top: 0;
+}
