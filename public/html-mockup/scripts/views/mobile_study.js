@@ -80,7 +80,8 @@ function renderStudy(data) {
 
     var $h2 = $('<h2 class="content-col"/>').text(prefix + ' ' + passage.name);
     var $p = $('<p class="content-col"/>').text(passage.text);
-    $(docFrag).append($h2).append($p);
+    var $docFrag = $(docFrag);
+    $docFrag.append($h2).append($p);
 
     if (passage.annotations.length !== 0) {
         $annotationList = $('<ul class="verse-notes no-bullets content-col"></ul>');
@@ -94,9 +95,9 @@ function renderStudy(data) {
             $annotationList.append($annotationElement);
         })
 
-        docFrag.append($annotationList);
+        $docFrag.append($annotationList);
     }
-    return docFrag;
+    return $docFrag;
 }
 
 function bindCurrentPassage() {
