@@ -123,7 +123,7 @@ function bindCurrentPassage() {
             studyTimer.reset(passage.duration_in_minutes);
         }
         else {
-            var $noPassagesMessage = $('<p class="content-col"/>').text('No passages found in this Study :,-(');
+            var $noPassagesMessage = $('<em class="content-col"/>').text('No passages found in this Study :,-(');
             $studyContent.append($noPassagesMessage);
         }
         $studyContent.fadeIn('fast');
