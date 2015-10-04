@@ -53,6 +53,24 @@ class VerseParser
     end.flatten
   end
 
+  def validate
+    fetch_bible_data
+  end
+
+  def to_study_passage_attributes
+    h = {}
+    verse_ranges.first.tap do |verse|
+    h = {
+      chapter_start: verse.start_chapter,
+      chapter_end: verse.end_chapter,
+      verse_start: verse.start_verse,
+      verse_end: verse.end_verse,
+      bible_book_id: book.id
+    }
+    end
+    h
+  end
+
   def books
     BibleBook.all
   end

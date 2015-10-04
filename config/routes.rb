@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   resources :studies
   resources :courses
-  resources :study_passages
-  resources :studies
+  resources :studies do
+    resources :study_passages
+  end
   resources :courses
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

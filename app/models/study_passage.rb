@@ -6,6 +6,10 @@ class StudyPassage < ActiveRecord::Base
 
   has_many :annotations, -> { order 'bible_passage_annotations.position' }, through: :bible_passage_annotation
 
+  def description
+    self.bible_book.description + " #{chapter_start}:#{verse_start}-#{chapter_end}:#{verse_end}"
+  end
+
   def to_h
     {
       chapter_start: chapter_start,
