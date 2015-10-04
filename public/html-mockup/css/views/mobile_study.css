@@ -1,3 +1,7 @@
+* {
+    -webkit-user-select: none;
+}
+
 .annotationRead {
     color: gray;
     opacity: 0.3;
