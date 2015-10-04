@@ -74,24 +74,35 @@ function fetchData() {
 }
 
 function renderStudy(data) {
-    var passage = data.passage;
+    var study_passage = data.passage;
     var prefix = data.prefix;
 
     var $docFrag = $(document.createDocumentFragment());
 
-    var $h2 = $('<h2 class="content-col"/>').text(prefix + ' ' + buildPassageReference(passage.bible_passage));
+    var $h2 = $('<h2 class="content-col"/>').text(prefix + ' ' + buildPassageReference(study_passage.bible_passage));
     $docFrag.append($h2);
 
-    $.each(passage.bible_passage.chapters, function(index, chapter) {
-        var $p = $('<p class="content-col"/>').text(chapter.chapter_title).attr('data-filter', 3);
-        $docFrag.append($p);
+    $.each(study_passage.bible_passage.chapters, function(index, chapter) {
+        var $chapterTitle = $('<p class="content-col"/>').text(chapter.chapter_title).attr('data-filter', 3);
+        $docFrag.append($chapterTitle);
+
+        $.each(chapter.verses, function(index, verse) {
+            var $verse = $('<p class="content-col"/>').attr('data-filter', 3);
+            $docFrag.append($verse);
+
+            var $verseNumber = $('<sup/>').text(verse.verse_number);
+            var $verseText = $('<span/>').text(verse.content);
+            $verse.append($verseNumber);
+            $verse.append($verseText);
+        });
     });
 
-    if (passage.annotations.length !== 0) {
+    if (study_passage.annotations.length !== 0) {
         $annotationList = $('<ul class="verse-notes no-bullets content-col"></ul>');
-        $.each(passage.annotations, function(index, annotation) {
-            var $label = $('<label/>').append($('<input type="checkbox">')).append(annotation.text);
-            var $annotationElement = $('<li class="passageAnnotation"/>').attr('data-filter', annotation.annotationType).append($label);
+        $.each(study_passage.annotations, function(index, annotation) {
+            var $label = $('<label/>').append($('<input type="checkbox">')).append(annotation.content);
+            debugger;
+            var $annotationElement = $('<li class="passageAnnotation"/>').attr('data-filter', annotation.annotation_type.description).append($label);
             $annotationElement.on('change', function() {
                 $annotationElement.toggleClass('annotationRead');
             });
@@ -138,7 +149,7 @@ function bindCurrentPassage() {
                 passage: passage
             }));
 
-            studyTimer.reset(passage.duration);
+            studyTimer.reset(passage.duration_in_minutes);
         }
         else {
             var $noPassagesMessage = $('<p class="content-col"/>').text('No passages found in this Study :,-(');
