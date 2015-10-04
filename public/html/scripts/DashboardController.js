@@ -1,7 +1,7 @@
 (function(){
     var app = angular.module("bibleStudyGuru");
 
-	var DashboardController = function($scope) {        
+	var DashboardController = function($scope) {
         //Queries the API for the activity list
         var queryRawActivityList = function(){
             //TODO: This is going to end up being a promise object generated from the HTTP service
@@ -15,6 +15,7 @@
         };
         
         //Returns an array of view-ready activities
+        //TODO: Add a sortable time field for ng-orderby
         var getActivityList = function(){
             var rawActivityList = queryRawActivityList();
             
@@ -39,7 +40,7 @@
 
             return activityList;
         };
-        
+
 
         //Handles clicking the "search" button
         $scope.onClickBiblePassageSearch = function() {
@@ -47,7 +48,7 @@
                 alert("You searched for " + $scope.biblePassageSearchTerm);
         };
 
-        //Saves the activity list.  (News feed.) 
+        //Saves the activity list.  (News feed.)
         $scope.activityList = getActivityList();
 	};
 	

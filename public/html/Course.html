@@ -1,0 +1,15 @@
+<div ng-controller="CourseController">
+
+    <link rel="stylesheet" type="text/css" href="html/css/views/course.css"/>
+
+    <div ng-repeat="course in courses">
+        <div class="studyPanel">
+            <h2 class="courseTitle">{{course.name}}</h2> <button>Add a study</button>
+            <p class="courseDescription">{{course.description}}</p>
+
+            <ol ng-repeat="study in course.studies">
+                <li><a href="{{study.show_url}}">{{study.name}}</a></li>
+            </ol>
+        </div>
+    </div>
+</div>
