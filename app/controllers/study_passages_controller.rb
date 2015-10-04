@@ -24,15 +24,15 @@ class StudyPassagesController < ApplicationController
   # POST /study_passages
   # POST /study_passages.json
   def create
-    @study_passage = StudyPassage.new(study_passage_params)
+
+    parser = VerseParser.new(params[:query])
+    parser.validate
+    @study_passage = StudyPassage.new(parser.to_study_passage_attributes.merge(study_id: params[:study_id]))
 
     respond_to do |format|
       if @study_passage.save
-        format.html { redirect_to @study_passage, notice: 'Study passage was successfully created.' }
+        format.html { redirect_to :back}
         format.json { render :show, status: :created, location: @study_passage }
-      else
-        format.html { render :new }
-        format.json { render json: @study_passage.errors, status: :unprocessable_entity }
       end
     end
   end

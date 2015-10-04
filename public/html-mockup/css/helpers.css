@@ -39,6 +39,9 @@ button.field-row {
 
 
 /* remove top margin for first heading in box */
+.box {
+    padding: 1em;
+}
 .box :first-child {
     margin-top: 0;
 }
@@ -56,6 +59,7 @@ button.field-row {
     bottom: 0;
     right: 0;
     text-align: center;
+    background: rgba(0,0,0,.7);
 }
 
 .modal-backdrop.active {
@@ -65,8 +69,28 @@ button.field-row {
 .modal {
     text-align: left;
     display: inline-block;
-    padding: 1em;
-    margin: 14% auto 0;
+    margin: 0 auto;
     background: #eee;
     border: 1em solid #ddd;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.modal .close {
+    background-color: #ddd;
+    border: none;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    line-height: 33px;
+    font-size: 36px;
+    position: absolute;
+    top: -16px;
+    right: -16px;
+    color: #555;
+}
+
+.modal .close:hover {
+    color: #222;
 }

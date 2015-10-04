@@ -1,0 +1,40 @@
+.passagePanel {
+    background-color: lightgray;
+    border: 1px solid black;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 15px 15px 15px 15px;
+}
+
+.iconButton {
+    padding: 5px 1px 3px 1px
+}
+
+.courseTitle {
+    display: inline-block;
+    margin: 0;
+}
+
+.exportHandout {
+    height: 25px;
+}
+
+.passageTime {
+    float: right;
+    font-size: x-small;
+}
+
+.noTimeAssigned {
+    opacity: .3;
+}
+
+.hasAnnotation {
+    color: blue;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.passageHeader h2 {
+    display: inline-block;
+}

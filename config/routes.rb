@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   resources :studies
   resources :courses
-  resources :study_passages
-  resources :studies
+  resources :studies do
+    resources :study_passages
+  end
   resources :courses
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
@@ -10,6 +11,17 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
+
+  namespace 'api' do
+    namespace 'v1' do
+      resources :user_actions, only: [:index]
+      resources :courses, only: [:index, :show, :create, :update, :destroy]
+      resources :studies, only: [:index, :show, :create, :update, :destroy]
+      resources :annotations, only: [:index, :show, :create, :update, :destroy]
+      resources :study_annotations, only: [:create, :update, :destroy]
+      resources :bible_passages, only: [:show]
+    end
+  end
 
 
   # Example of regular route:
