@@ -3,19 +3,41 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            var textElement = $('#annotationText');
+            textElement.on('keyup', function() {
+                var text = textElement.val();
+                if (text !== '' && text.substring(text.length - 1) === '?') {
+                    $('#questionRadio').prop('checked', true);
+                }
+                else if (text !== '' && text.indexOf('https://www.youtube.com/') !== -1) {
+                    $('#videoRadio').prop('checked', true);
+                }
+                else if (text.length > 5 && text.substring(text.length - 4) === '.mp3') {
+                    $('#audioRadio').prop('checked', true);
+                }
+                else {
+                    $('#commentRadio').prop('checked', true);
+                }
+            });
+        });
+    </script>
 </head>
 <body>
 <form>
-
-    <textarea class="annotationTextarea" placeholder="Enter your annotation">
-    </textarea>
+    <textarea id="annotationText" placeholder="Enter your annotation"></textarea>
 
     <div>
-    <input type="radio" name="annotationType" value="question" checked/> Question
-    <input type="radio" name="annotationType" value="comment"/> Comment
+        <input id="commentRadio" type="radio" name="annotationType" value="comment" checked/> Comment
+        <input id="questionRadio" type="radio" name="annotationType" value="question"/> Question
 
-    <button>Save</button>
+        <input id="audioRadio" type="radio" name="annotationType" value="audio"/> Audio
+        <input id="videoRadio" type="radio" name="annotationType" value="video"/> Video
+
+        <button>Save</button>
     </div>
 </form>
 </body>

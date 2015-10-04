@@ -1,10 +1,10 @@
 class StudyPassage < ActiveRecord::Base
   belongs_to :study
   belongs_to :bible_translation
-  belongs_to :bible_passage_annotation
+  has_many :bible_passage_annotations
   belongs_to :bible_book
 
-  has_many :annotations, -> { order 'bible_passage_annotations.position' }, through: :bible_passage_annotation
+  has_many :annotations, -> { order 'bible_passage_annotations.position' }, through: :bible_passage_annotations
 
   def description
     self.bible_book.description + " #{chapter_start}:#{verse_start}-#{chapter_end}:#{verse_end}"
