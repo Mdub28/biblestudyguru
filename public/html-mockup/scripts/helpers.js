@@ -44,8 +44,8 @@ var Modal = function modalConstructor(name) {
     });
 
     // hide when .close is clicked
-    var closeBtn = this.backDrop.querySelector('.close');
-    closeBtn.addEventListener('click', this.hide.bind(this));
+    var $closeBtns = $(this.backDrop).find('.close');
+    $closeBtns.click(this.hide.bind(this));
 };
 
 Modal.prototype.show = function showModal() {
