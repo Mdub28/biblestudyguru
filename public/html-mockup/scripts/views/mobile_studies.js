@@ -17,7 +17,7 @@ function bindData(courses) {
         $courseListItem.append('<p>' + course.description + '</p>');
 
         if (course.studies.length === 0) {
-            $courseListItem.append('<p class="no-links-msg">There are no studies for this course</p>')
+            $courseListItem.append('<em class="no-links-msg">There are no studies for this course</em>')
         }
         else {
             var $studyList = $('<ul class="study-link-list"></ul>');
