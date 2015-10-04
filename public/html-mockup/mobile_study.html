@@ -10,29 +10,22 @@
     <link rel="stylesheet" type="text/css" href="fonts/icomoon/icomoon.css">
     <link rel="stylesheet" href="css/helpers.css">
     <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/views/mobile.css">
 </head>
-<body>
-    <h1 class="top-branding content-col">Lectionary / Pentecost Sunday</h1>
-    <h2 class="content-col">Acts 2:1-11 (1 of 3)</h2>
-    <ol class="verses content-col">
-        <li class="box">verse text
-            <ul class="verse-notes no-bullets">
-                <li><label><input type="checkbox"> question 1</label></li>
-                <li><label><input type="checkbox"> question 2</label></li>
-                <li><label><input type="checkbox"> etc.</label></li>
-            </ul>
-        </li>
-        <li class="box">verse text
-            <ul class="verse-notes no-bullets">
-                <li><label><input type="checkbox"> question 1</label></li>
-                <li><label><input type="checkbox"> etc.</label></li>
-            </ul>
-        </li>
-    </ol>
-    <div class="controls-footer content-col">
-        <button class="show-filters-btn"><i class="icon-filter"></i></button>
-        <button class="timer-btn">0m 55s</button>
+<body id="studyBody" data-enhance="false">
+    <h1 id="studyTitle" class="top-branding content-col"><!-- Study Title Injected Here --></h1>
+
+    <div id="studyContent">
+
     </div>
+
+    <div class="controls-footer">
+        <div class="content-col box">
+            <button class="show-filters-btn"><i class="icon-filter"></i></button>
+            <button class="timer-btn"> <!-- Timer text gets injected here... --> </button>
+        </div>
+    </div>
+
     <div class="modal-backdrop filter-modal">
         <div class="modal box">
             <h3>filter study content</h3>
@@ -40,19 +33,15 @@
                 <li><label><input type="checkbox"> Scripture</label></li>
                 <li><label><input type="checkbox"> Questions</label></li>
                 <li><label><input type="checkbox"> Commentary</label></li>
-                <li><label><input type="checkbox"> Video</label></li>
             </ul>
             <button class="save">Save</button> or <button class="close">Cancel</button>
         </div>
     </div>
 
     <!-- scripts -->
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <script src="scripts/jquery.mobile.custom.js"></script>
     <script src="scripts/helpers.js"></script>
-    <script>
-    var filterModal = new Modal('filter');
-    document.querySelector('.show-filters-btn').addEventListener('click', function filterButtonClick() {
-        filterModal.show();
-    });
-    </script>
+    <script src="scripts/views/mobile_study.js"></script>
 </body>
 </html>
