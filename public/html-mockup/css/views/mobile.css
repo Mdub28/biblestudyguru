@@ -10,9 +10,14 @@
 
 .passageAnnotation {
     font-size: x-large;
+    font-weight: bold;
     margin-bottom: 10px;
 }
 
 .login-form input {
     width: 200px;
+}
+
+#studyContent {
+    margin-bottom: 90px;
 }

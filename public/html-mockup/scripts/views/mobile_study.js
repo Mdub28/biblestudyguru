@@ -9,14 +9,14 @@ $(function() {
 });
 
 function listenForSwipes() {
-    $('#studyBody').on('swiperight', function(e) {
+    $(document).on('swiperight', function(e) {
         if (currentPassageIndex > 0) {
             currentPassageIndex--;
             bindCurrentPassage()
         }
     });
 
-    $('#studyBody').on('swipeleft', function(e) {
+    $(document).on('swipeleft', function(e) {
         if (currentPassageIndex < passages.length-1) {
             currentPassageIndex++;
             bindCurrentPassage()
@@ -70,7 +70,7 @@ function renderStudy(data) {
     if (study_passage.annotations.length !== 0) {
         $annotationList = $('<ul class="verse-notes no-bullets content-col"></ul>');
         $.each(study_passage.annotations, function(index, annotation) {
-            var $label = $('<label/>').append($('<input type="checkbox">')).append(annotation.content);
+            var $label = $('<label/>').append($('<input type="checkbox">')).append(annotation.annotation_type.description + ': ' + annotation.content);
             var $annotationElement = $('<li class="passageAnnotation"/>').attr('data-filter', annotation.annotation_type.description).append($label);
             $annotationElement.on('change', function() {
                 $annotationElement.toggleClass('annotationRead');
@@ -123,7 +123,7 @@ function bindCurrentPassage() {
             studyTimer.reset(passage.duration_in_minutes);
         }
         else {
-            var $noPassagesMessage = $('<p class="content-col"/>').text('No passages found in this Study :,-(');
+            var $noPassagesMessage = $('<em class="content-col"/>').text('No passages found in this Study :,-(');
             $studyContent.append($noPassagesMessage);
         }
         $studyContent.fadeIn('fast');
