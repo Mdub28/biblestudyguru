@@ -20,6 +20,8 @@
         var passages;
 
         $(function() {
+            $.mobile.loading().hide();
+
             listenForSwipes();
             fetchData();
         });
@@ -48,7 +50,7 @@
             var serviceUrl = 'http://localhost:3000/api/v1/studies/' + studyId;
             $.getJSON(serviceUrl, function(response) {
                 if (response.status == 'success') {
-                    bindData(response.data)
+                    bindData(response.data);
                 }
                 else {
                     alert('Error fetching study');
@@ -57,27 +59,30 @@
         }
 
         function bindCurrentPassage() {
-            var passage = passages[currentPassageIndex];
             var $studyContent = $('#studyContent');
-            $studyContent.empty();
-            $studyContent.append('<h2 class="content-col">' + passage.name + '</h2>')
-            $studyContent.append('<p class="content-col">' + passage.text + '</h2>')
+            $studyContent.fadeOut('fast', function() {
+                var passage = passages[currentPassageIndex];
+                $studyContent.empty();
+                $studyContent.append('<h2 class="content-col">' + passage.name + '</h2>')
+                $studyContent.append('<p class="content-col">' + passage.text + '</h2>')
 
-            if (passage.annotations.length !== 0) {
+                if (passage.annotations.length !== 0) {
 
-                $annotationList = $('<ul class="verse-notes no-bullets content-col"></ul>');
-                $.each(passage.annotations, function(index, annotation) {
-                    var $annotationElement = $('<li><label><input type="checkbox">' + annotation.text + '</label></li>');
-                    $annotationElement.on('change', function() {
-                        $annotationElement.toggleClass('annotationRead');
-                    });
+                    $annotationList = $('<ul class="verse-notes no-bullets content-col"></ul>');
+                    $.each(passage.annotations, function(index, annotation) {
+                        var $annotationElement = $('<li><label><input type="checkbox">' + annotation.text + '</label></li>');
+                        $annotationElement.on('change', function() {
+                            $annotationElement.toggleClass('annotationRead');
+                        });
 
-                    $annotationList.append($annotationElement);
-                })
+                        $annotationList.append($annotationElement);
+                    })
 
-                $studyContent.append($annotationList);
-            }
+                    $studyContent.append($annotationList);
+                }
 
+                $studyContent.fadeIn('fast');
+            });
         }
 
         function bindData(study) {
