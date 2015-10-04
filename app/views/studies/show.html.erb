@@ -21,6 +21,7 @@
           <button class="iconButton"><i class="icon-clock"></i></button>
       </span>
       <p class="passageContent"><span class="hasAnnotation">
+        <%- book = study_passage.bible_passage %>
         <%- study_passage.bible_passage.chapters.values.each_with_index do |chapter, index| %>
           <%- if index != 0 %>
             <br />
@@ -28,11 +29,30 @@
           <strong><%= chapter.chapter_title %></strong>
           <br />
           <%- chapter.verses.each do |verse| %>
-            <span class="hasAnnotation"><%=verse.verse_number%></span> <%=verse.content%>
+            <span class="hasAnnotation"><%=verse.verse_number%></span><span data-reference="<%= book.book_id + ' ' + chapter.chapter_id + ':' + verse.verse_number %>"> <%=verse.content%></span>
           <%- end %>
         <%- end %>
   </div>
   <%- end %>
+  <div class="modal-backdrop add-annotation-modal">
+      <form class="modal add-annotation-form box">
+          <h2>Add annotation</h2>
+          <blockquote></blockquote>
+          <textarea placeholder="Enter your annotation"></textarea>
+  
+          <div class="controls">
+              <label>
+                  <input type="radio" name="annotationType" value="question" checked/> Question
+              </label>
+              <label>
+                  <input type="radio" name="annotationType" value="comment"/> Comment
+              </label>
+  
+              <button>Save</button>
+          </div>
+          <button class="close">&#0215;</button>
+        </form>
+  </div>
 </div>
 <div class='activityFeedPanel' style='bottom: inherit;'>
 <ol id="annotationList">
@@ -65,3 +85,6 @@
     </li>
 </ol>
 </div>
+<script src="https://code.jquery.com/jquery-2.1.4.js"></script>                                                                                                         
+<script src="/html-mockup/scripts/helpers.js"></script>
+<script src="/html-mockup/scripts/views/passage.js"></script>
