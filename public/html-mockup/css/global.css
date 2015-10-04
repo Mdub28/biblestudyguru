@@ -29,7 +29,7 @@
 */
 
 /* .controls-footer */
-.verse-notes {
+.verses {
     /* make room for fixed footer */
     margin-bottom: 83px;
 }
@@ -50,12 +50,10 @@
 /* footer buttons */
 .show-filters-btn {
     float: left;
-    font-size: x-large;
 }
 
 .timer-btn {
     float: right;
-    font-size: x-large;
 }
 
 
@@ -66,18 +64,24 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-top: -125px;
+    margin-top: -87px;
     margin-left: -150px;
 }
 
-.controls-footer {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #eee;
+.filter-modal .close {
+    background-color: #ddd;
+    border: none;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    line-height: 33px;
+    font-size: 36px;
+    position: absolute;
+    top: -18px;
+    right: -18px;
+    color: #555;
 }
 
-.controls-footer > div {
-    overflow: hidden;
+.filter-modal .close:hover {
+    color: #222;
 }
