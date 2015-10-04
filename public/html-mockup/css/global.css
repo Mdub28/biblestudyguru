@@ -1,8 +1,3 @@
-/*
-    specific styles
-*/
-
-
 .top-branding {
     text-align: center;
 }
@@ -29,23 +24,14 @@
 
 
 
-/* single study view */
+/*
+    single study view
+*/
 
-.show-filters-btn {
-    float: left;
-}
-
-.timer-btn {
-    float: right;
-}
-
-.filter-modal .modal {
-    width: 300px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -125px;
-    margin-left: -150px;
+/* .controls-footer */
+.verses {
+    /* make room for fixed footer */
+    margin-bottom: 83px;
 }
 
 .controls-footer {
@@ -58,4 +44,26 @@
 
 .controls-footer > div {
     overflow: hidden;
+}
+
+
+/* footer buttons */
+.show-filters-btn {
+    float: left;
+}
+
+.timer-btn {
+    float: right;
+}
+
+
+
+/* modal */
+.filter-modal .modal {
+    width: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -125px;
+    margin-left: -150px;
 }
