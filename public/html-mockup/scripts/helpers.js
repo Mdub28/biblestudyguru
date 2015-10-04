@@ -80,7 +80,6 @@ Timer.prototype.getElapsed = function getElapsed() {
 
 Timer.prototype.start = function startTimer() {
     this.updateColor();
-    this.startTime = Date.now();
     var t = this;
     function decrement() {
         t.seconds--;
@@ -100,4 +99,10 @@ Timer.prototype.stop = function stopTimer() {
 
 Timer.prototype.updateColor = function updateColor() {
     this.button.style.color = this.seconds < 0 ? 'red' : 'green';
+}
+
+Timer.prototype.reset = function reset(newSeconds) {
+    this.stop();
+    this.seconds = newSeconds;
+    this.button.textContent = this.getElapsed();
 }
