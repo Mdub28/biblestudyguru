@@ -56,8 +56,7 @@ class StudyPassagesController < ApplicationController
   def destroy
     @study_passage.destroy
     respond_to do |format|
-      format.html { redirect_to study_passages_url, notice: 'Study passage was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to :back }
     end
   end
 
