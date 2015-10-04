@@ -10,6 +10,21 @@
     <link rel="stylesheet" type="text/css" href="fonts/icomoon/icomoon.css">
     <link rel="stylesheet" href="css/helpers.css">
     <link rel="stylesheet" href="css/global.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            var studyId = 1;
+            var serviceUrl = 'http://localhost:3000/api/v1/studies/' + studyId;
+            $.getJSON(serviceUrl, function(response) {
+                if (response.status == 'success') {
+                    alert('Data fetched successfully!');
+                }
+                else {
+                    alert('Error fetching study');
+                }
+            });
+        });
+    </script>
 </head>
 <body>
     <h1 class="top-branding content-col">Lectionary / Pentecost Sunday</h1>
@@ -45,7 +60,5 @@
         </div>
     </div>
 
-    <!-- scripts -->
-    <script src="script.js"></script>
 </body>
 </html>
