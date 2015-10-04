@@ -15,7 +15,9 @@
   <%- @study.study_passages.each do |study_passage| %>
   <div class="passagePanel">
   <h3 class="courseTitle"><%=study_passage.description%></h3>
-      <button class="iconButton" title="Click to delete passage"> <i class="icon-bin"></i></button>
+      <%= button_to("delete", {:controller => :study_passages, :action => 'destroy', :study_id => @study.id, :id => study_passage.id }, :method => :delete) do%>
+        <i class="icon-bin"></i>
+      <%- end %>
       <span class="passageTime">
           10 mins
           <button class="iconButton"><i class="icon-clock"></i></button>
