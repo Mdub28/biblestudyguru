@@ -92,9 +92,8 @@
         }
 
         function bindData(study) {
-            // Set name and description.
+            // Set name.
             $('#studyTitle').text(study.name);
-            $('#studyDescription').text(study.description);
 
             // Generate passages...
             passages = [
@@ -145,7 +144,6 @@
 </head>
 <body id="studyBody" data-enhance="false">
     <h1 id="studyTitle" class="top-branding content-col"><!-- Study Title Injected Here --></h1>
-    <p id="studyDescription" class="content-col"><!-- Study Description Injected Here --></p>
 
     <div id="studyContent">
 
