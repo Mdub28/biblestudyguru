@@ -33,10 +33,12 @@
 
 .show-filters-btn {
     float: left;
+    font-size: x-large;
 }
 
 .timer-btn {
     float: right;
+    font-size: x-large;
 }
 
 .filter-modal .modal {

@@ -11,3 +11,7 @@
     font-size: x-large;
     margin-bottom: 10px;
 }
+
+.login-form input {
+    width: 200px;
+}
