@@ -9,14 +9,14 @@ $(function() {
 });
 
 function listenForSwipes() {
-    $('#studyBody').on('swiperight', function(e) {
+    $(document).on('swiperight', function(e) {
         if (currentPassageIndex > 0) {
             currentPassageIndex--;
             bindCurrentPassage()
         }
     });
 
-    $('#studyBody').on('swipeleft', function(e) {
+    $(document).on('swipeleft', function(e) {
         if (currentPassageIndex < passages.length-1) {
             currentPassageIndex++;
             bindCurrentPassage()
