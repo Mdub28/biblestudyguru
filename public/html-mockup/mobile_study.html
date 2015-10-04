@@ -10,25 +10,92 @@
     <link rel="stylesheet" type="text/css" href="fonts/icomoon/icomoon.css">
     <link rel="stylesheet" href="css/helpers.css">
     <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/views/mobile_study.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
     <script type="text/javascript">
         $(function() {
-            var studyId = 1;
+            var url = window.location.search;
+            var queryParameter = '?studyId=';
+            var studyId = url.substring(url.indexOf(queryParameter) + queryParameter.length);
+
             var serviceUrl = 'http://localhost:3000/api/v1/studies/' + studyId;
             $.getJSON(serviceUrl, function(response) {
                 if (response.status == 'success') {
-                    alert('Data fetched successfully!');
+                    bindData(response.data)
                 }
                 else {
                     alert('Error fetching study');
                 }
             });
         });
+
+        function bindData(study) {
+            // Set name and description.
+            $('#studyTitle').text(study.name);
+            $('#studyDescription').text(study.description);
+
+            // Generate passages...
+            var passages = [
+                {
+                    name: 'Acts 2:1-4',
+                    text: 'When the day of Pentecost had come, they were all together in one place. 2 And suddenly a sound came from heaven like the rush of a mighty wind, and it filled all the house where they were sitting. 3 And there appeared to them tongues as of fire, distributed and resting on each one of them. 4 And they were all filled with the Holy Spirit and began to speak in other tongues, as the Spirit gave them utterance.',
+                    annotations: [
+                        {text: 'Question 1'},
+                        {text: 'Question 2'},
+                        {text: 'Question 3'}
+                    ]
+                },
+                {
+                    name: '1 Cor 13:1-3',
+                    text: 'If I speak in the tongues of men and of angels, but have not love, I am a noisy gong or a clanging cymbal. 2 And if I have prophetic powers, and understand all mysteries and all knowledge, and if I have all faith, so as to remove mountains, but have not love, I am nothing. 3 If I give away all I have, and if I deliver my body to be burned,[a] but have not love, I gain nothing.',
+                    annotations: [
+                        {text: 'Question 4'},
+                        {text: 'Note 1'},
+                        {text: 'Question 5'}
+                    ]
+                },
+                {
+                    name: 'John 3:1-3',
+                    text: ' Now there was a man of the Pharisees, named Nicode′mus, a ruler of the Jews. 2 This man came to Jesus[a] by night and said to him, “Rabbi, we know that you are a teacher come from God; for no one can do these signs that you do, unless God is with him.” 3 Jesus answered him, “Truly, truly, I say to you, unless one is born anew,[b] he cannot see the kingdom of God.”',
+                    annotations: [
+                        {text: 'Note 2'},
+                        {text: 'Note 3'}
+                    ]
+                }
+            ];
+
+            var $studyBody = $('#studyBody');
+            $.each(passages, function(key, passage) {
+                $studyBody.append('<h2 class="content-col">' + passage.name + '</h2>')
+                $studyBody.append('<p class="content-col">' + passage.text + '</h2>')
+
+                if (passage.annotations.length !== 0) {
+
+                    $annotationList = $('<ul class="verse-notes no-bullets content-col"></ul>');
+                    $.each(passage.annotations, function(index, annotation) {
+                        var $annotationElement = $('<li><label><input type="checkbox">' + annotation.text + '</label></li>');
+                        $annotationElement.on('change', function() {
+                            $annotationElement.toggleClass('annotationRead');
+                        });
+
+                        $annotationList.append($annotationElement);
+                    })
+
+                    $studyBody.append($annotationList);
+                }
+
+            });
+        }
     </script>
 </head>
-<body>
-    <h1 class="top-branding content-col">Lectionary / Pentecost Sunday</h1>
-    <h2 class="content-col">Acts 2:1-11 (1 of 3)</h2>
+<body id="studyBody">
+    <h1 id="studyTitle" class="top-branding content-col"><!-- Study Title Injected Here --></h1>
+    <p id="studyDescription" class="content-col"><!-- Study Description Injected Here --></p>
+
+
+
+<!--
+    <h2 >Acts 2:1-11 (1 of 3)</h2>
     <ol class="verses content-col">
         <li class="box">verse text
             <ul class="verse-notes no-bullets">
@@ -59,6 +126,6 @@
             </ul>
         </div>
     </div>
-
+    -->
 </body>
 </html>
