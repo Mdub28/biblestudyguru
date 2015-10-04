@@ -49,10 +49,14 @@
     <!-- scripts -->
     <script src="scripts/helpers.js"></script>
     <script>
+    // setup modal
     var filterModal = new Modal('filter');
-    document.querySelector('.show-filters-btn').addEventListener('click', function filterButtonClick() {
+    on(qs('.show-filters-btn'), 'click', function filterButtonClick() {
         filterModal.show();
     });
+
+    // setup timer button
+    var studyTimer = new Timer(qs('.timer-btn'), 5);
     </script>
 </body>
 </html>
