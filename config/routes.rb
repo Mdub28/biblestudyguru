@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       resources :studies, only: [:index, :show, :create, :update, :destroy]
       resources :annotations, only: [:index, :show, :create, :update, :destroy]
       resources :study_annotations, only: [:create, :update, :destroy]
+      resources :bible_passages, only: [:show]
     end
   end
 

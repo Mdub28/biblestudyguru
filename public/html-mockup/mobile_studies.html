@@ -9,42 +9,6 @@
     <link rel="stylesheet" href="css/element-defaults.css">
     <link rel="stylesheet" href="css/helpers.css">
     <link rel="stylesheet" href="css/global.css">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
-    <script type="text/javascript">
-        $(function() {
-            var serviceUrl = '/api/v1/courses/';
-            $.getJSON(serviceUrl, function(response) {
-                if (response.status == 'success') {
-                    bindData(response.data);
-                }
-                else {
-                    alert('Error fetching courses');
-                }
-            });
-        });
-
-        function bindData(courses) {
-            $.each(courses, function(index, course) {
-                var $courseListItem = $('<li class="box"></li>');
-                $courseListItem.append('<h2>' + course.name + '</h2>');
-                $courseListItem.append('<p>' + course.description + '</p>');
-
-                if (course.studies.length === 0) {
-                    $courseListItem.append('<p class="no-links-msg">There are no studies for this course</p>')
-                }
-                else {
-                    var $studyList = $('<ul class="study-link-list"></ul>');
-                    $courseListItem.append($studyList);
-
-                    $.each(course.studies, function(index, study) {
-                        $studyList.append('<li><a href="/html-mockup/mobile_study.html?studyId=' + study.id + '">' + study.name + '</a></li>');
-                    });
-                }
-
-                $('#courseList').append($courseListItem);
-            });
-        }
-    </script>
 </head>
 <body>
     <h1 class="top-branding content-col">Bible Study Guru</h1>
@@ -52,5 +16,9 @@
     <ul id="courseList" class="study-list content-col">
         <!-- Courses get injected here... -->
     </ul>
+
+    <!-- scripts -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="scripts/views/mobile_studies.js"></script>
 </body>
 </html>

@@ -1,11 +1,23 @@
+<!DOCTYPE html>
 <html ng-app="bibleStudyGuru">
 	<head>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+        <script src="html/scripts/third_party/angular-modal-service.js"></script>
+        
+        <script src="html/scripts/Utilities.js"></script>
 		<script src="html-mockup/scripts/main.js"></script>
+        <script src="html/scripts/DashboardController.js"></script>
+        <script src="html/scripts/CourseController.js"/></script>
+        
+        <link rel="stylesheet" type="text/css" href="html/css/element-defaults.css"/>
+        <link rel="stylesheet" type="text/css" href="html/css/helpers.css"/>
+        <link rel="stylesheet" type="text/css" href="html/css/global.css"/>
+        <link rel="stylesheet" type="text/css" href="html/css/views/dashboard.css"/>
+
 	</head>
 	
 	<body ng-controller="IndexController">
-		<h3>{{greeting}}</h3>
-		32 / 8 = {{32 / 8}}
+        <div ng-include="'html/Dashboard.html'"></div>    
+		<!--<div ng-include="'html/Course.html'"></div>-->
 	</body>
 </html>

@@ -1,0 +1,47 @@
+<div class="dashboard" ng-controller="DashboardController">
+
+    <div class="dashboardHeader">
+
+        <div class="titlePanel">
+            <img class="logo" src="html/img/icons/logo.jpg"/>
+            <h1 class="productTitle">Bible Study Guru</h1>
+        </div>
+
+        <form class="loginPanel" action="/users/sign_in" accept-charset="UTF-8" method="post">
+            <input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="ZkCYYfBknOGOmz2qVbYKbkQb/L6+OOper1hvZAx/4h/ShkC8aXCpvwt6UDBWf5VxCZdF/vfgLdFhDPRRDP0TRw==" />
+            <div class="loginField">
+                <label for="username">Username:</label>
+                <input id="username" type="text" size="20" placeholder="Username"/>
+            </div>
+            <div class="loginField">
+                <label for="password">Password:</label>
+                <input id="password" type="text" size="10" placeholder="Password"/>
+            </div>
+            <input type="submit" name="commit" value="Login" />
+        </form>
+    </div>
+
+    <div class="welcomePanel">
+        <h2>Welcome to Bible Study Guru!</h2>
+        <p>The purpose of a Bible Study Group is to engage people with Sacred Scripture. However, leading one of these groups can be intimidating! Where to start? What resources to use? How do I best bring my friends closer to God through the study of His Word? Wouldn't it be great to use the entire Body of Christ to help you build your Bible study? Well with Bible Study Guru, you can!</p>
+        <p>With Bible Study Guru you can annotate your preferred translation of the Bible with commentary and questions to guide your local Bible Study Group.
+            You can also add links to videos, images and MP3s. All annotations are, by default, visible to the public.
+            This means that, as you study the Bible, you can look at the questions and comments other Christians from around the globe have added and automatically incorporate into your own study.</p>
+        <p>With Bible Study Guru, we will help Bible Study leaders around the world prepare the best possible Bible studies, to break open the Word of God for others. Enter a Bible passage below or <a href="#">Register</a> to get started!</p>
+
+        <div class="passageSearchPanel">
+            <label for="biblePassage">Bible Passage:</label>
+            <input id="biblePassage" type="text" ng-model="biblePassageSearchTerm"/>
+            <button ng-click="onClickBiblePassageSearch()">Search!</button>
+        </div>
+    </div>
+
+    <div class="activityFeedPanel">
+        <h2>Activity Feed</h2>
+
+        <ol id="activityList" ng-repeat="activity in activityList">
+            <li><img ng-src="{{activity.avatar_url}}" class="profileThumbanil"/><a href="{{activity.name_link}}">{{activity.name}}</a> {{activity.pre_link_text}}<a href="{{activity.activity_link}}">{{activity.link_text}}</a>{{post_link_text}}</li>
+        </ol>
+    </div>
+
+</div>
